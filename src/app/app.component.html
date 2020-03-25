@@ -5,9 +5,12 @@
     <h3>In Progress</h3>
 
     <div class="card" *ngFor="let card of inProgress" cdkDrag>
-      <h5> <strong>Name : </strong> {{card.name}}</h5>
-      <p> <strong>Date : </strong> {{card.date}}</p>
-      <p> <strong>Description : </strong>{{card.description}}</p>
+      <input type="text" #nameInput name="name" [(ngModel)]="card.name" [hidden]="true"
+        (keyup.enter)="nameInput.hidden =true; name.hidden=false">
+      <h5 #name (click)="nameInput.hidden= false; name.hidden = true" [hidden]="false"> {{card.name}}</h5>
+      <!-- <label id="lblName" > {{card.name}} </label> -->
+      <!-- <p> <strong>Date : </strong> {{card.date}}</p>
+      <p> <strong>Description : </strong>{{card.description}}</p> -->
     </div>
 
   </div>
@@ -17,9 +20,9 @@
     <h3>Under Testing</h3>
 
     <div class="card" *ngFor="let card of underTesting" cdkDrag>
-      <h5> <strong>Name : </strong> {{card.name}}</h5>
-      <p> <strong>Date : </strong> {{card.date}}</p>
-      <p> <strong>Description : </strong>{{card.description}}</p>
+      <h5>{{card.name}}</h5>
+      <!-- <p> <strong>Date : </strong> {{card.date}}</p>
+      <p> <strong>Description : </strong>{{card.description}}</p> -->
     </div>
 
   </div>
@@ -29,9 +32,9 @@
     <h3>Completed</h3>
 
     <div class="card" *ngFor="let card of completed" cdkDrag>
-      <h5> <strong>Name : </strong> {{card.name}}</h5>
-      <p> <strong>Date : </strong> {{card.date}}</p>
-      <p> <strong>Description : </strong>{{card.description}}</p>
+      <h5>{{card.name}}</h5>
+      <!-- <p> <strong>Date : </strong> {{card.date}}</p>
+      <p> <strong>Description : </strong>{{card.description}}</p> -->
     </div>
 
   </div>
