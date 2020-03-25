@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="board" cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+    [cdkDropListConnectedTo]="[completedList, underTestingList]" (cdkDropListDropped)="onDrop($event)">
+    <h3>In Progress</h3>
+
+    <div class="card" *ngFor="let card of inProgress" cdkDrag>
+      <h5> <strong>Name : </strong> {{card.name}}</h5>
+      <p> <strong>Date : </strong> {{card.date}}</p>
+      <p> <strong>Description : </strong>{{card.description}}</p>
+    </div>
+
+  </div>
+
+  <div class="board" cdkDropList #underTestingList="cdkDropList" [cdkDropListData]="underTesting"
+    [cdkDropListConnectedTo]="[inProgressList, completedList]" (cdkDropListDropped)="onDrop($event)">
+    <h3>Under Testing</h3>
+
+    <div class="card" *ngFor="let card of underTesting" cdkDrag>
+      <h5> <strong>Name : </strong> {{card.name}}</h5>
+      <p> <strong>Date : </strong> {{card.date}}</p>
+      <p> <strong>Description : </strong>{{card.description}}</p>
+    </div>
+
+  </div>
+
+  <div class="board" cdkDropList #completedList="cdkDropList" [cdkDropListData]="completed"
+    [cdkDropListConnectedTo]="[inProgressList, underTestingList]" (cdkDropListDropped)="onDrop($event)">
+    <h3>Completed</h3>
+
+    <div class="card" *ngFor="let card of completed" cdkDrag>
+      <h5> <strong>Name : </strong> {{card.name}}</h5>
+      <p> <strong>Date : </strong> {{card.date}}</p>
+      <p> <strong>Description : </strong>{{card.description}}</p>
+    </div>
+
+  </div>
+
+</div>
